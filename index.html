@@ -40,9 +40,39 @@
       <!-- Placeholder for the graph -->
       <div id="weatherGraph"></div>
     </div>
+    <canvas id="temperatureChart" width="400" height="200"></canvas>
 
     <!-- JavaScript libraries (e.g., for Chart.js) -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Add any additional JavaScript here -->
   </body>
+  <script>
+    // Assuming you have your data in these arrays
+    var dates = ['2023-01-01', '2023-01-02', '2023-01-03']; // Add your dates here
+    var temperatures = [20, 22, 19]; // Add your temperatures here
+
+    var ctx = document.getElementById('temperatureChart').getContext('2d');
+    var temperatureChart = new Chart(ctx, {
+      type: 'line', // Line chart
+      data: {
+        labels: dates,
+        datasets: [
+          {
+            label: 'Daily Temperature (°C)',
+            data: temperatures,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: false,
+          },
+        },
+      },
+    });
+  </script>
 </html>

@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "functions-framework --target=helloWorld",
+    "weather": "functions-framework --target=submit-weather-data"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/functions-framework": "^3.3.0",
     "axios": "^1.6.2",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
