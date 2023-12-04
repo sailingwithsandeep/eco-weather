@@ -1,6 +1,8 @@
 runtime: nodejs
 env: flex
 
+# Service 2
+service: submit-data
 handlers:
   - url: /.*
     script: auto
