@@ -4,7 +4,11 @@ const functions = require('@google-cloud/functions-framework');
 const { fetchWeatherApi } = require('openmeteo');
 const { Firestore } = require('@google-cloud/firestore');
 
-const firestore = new Firestore();
+const firestore = new Firestore({
+  projectId: 'dynamic-osprey-399518',
+  keyFilename: './application_default_credentials.json',
+  databaseId: 'ecotraxk',
+});
 
 functions.http('submit-weather-data', async (req, res) => {
   try {
@@ -63,14 +67,13 @@ functions.http('submit-weather-data', async (req, res) => {
 
       const temperature2m = weatherData.hourly.temperature2m;
 
-      // const document = firestore.doc('ecotraxk/weather_data');
+      const document = firestore.doc(`weather_data/${Date.now()}`);
 
-      // Enter new data into the document.
-      // await document.set({
-      //   aTime: time,
-      //   aTemperature: temperature2m,
-      //   created_at: new Date(),
-      // });
+      await document.set({
+        aTime: time,
+        aTemperature: [...temperature2m],
+        created_at: new Date(),
+      });
 
       console.log('Entered new data into the document');
 
