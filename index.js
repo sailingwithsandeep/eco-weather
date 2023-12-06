@@ -63,14 +63,14 @@ functions.http('submit-weather-data', async (req, res) => {
 
       const temperature2m = weatherData.hourly.temperature2m;
 
-      const document = firestore.doc('ecotraxk/weather_data');
+      // const document = firestore.doc('ecotraxk/weather_data');
 
       // Enter new data into the document.
-      await document.set({
-        aTime: time,
-        aTemperature: temperature2m,
-        created_at: new Date(),
-      });
+      // await document.set({
+      //   aTime: time,
+      //   aTemperature: temperature2m,
+      //   created_at: new Date(),
+      // });
 
       console.log('Entered new data into the document');
 
