@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/firestore": "^7.1.0",
     "@google-cloud/functions-framework": "^3.3.0",
     "axios": "^1.6.2",
     "ejs": "^3.1.9",

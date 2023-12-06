@@ -3,7 +3,6 @@ const ejs = require('ejs');
 const functions = require('@google-cloud/functions-framework');
 const { fetchWeatherApi } = require('openmeteo');
 const { Firestore } = require('@google-cloud/firestore');
-const { FirestoreStore } = require('@google-cloud/connect-firestore');
 
 const firestore = new Firestore();
 
