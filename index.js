@@ -2,6 +2,10 @@ const fs = require('fs');
 const ejs = require('ejs');
 const functions = require('@google-cloud/functions-framework');
 const { fetchWeatherApi } = require('openmeteo');
+const { Firestore } = require('@google-cloud/firestore');
+const { FirestoreStore } = require('@google-cloud/connect-firestore');
+
+const firestore = new Firestore();
 
 functions.http('submit-weather-data', async (req, res) => {
   try {
@@ -59,6 +63,17 @@ functions.http('submit-weather-data', async (req, res) => {
       );
 
       const temperature2m = weatherData.hourly.temperature2m;
+
+      const document = firestore.doc('ecotraxk/weather_data');
+
+      // Enter new data into the document.
+      await document.set({
+        aTime: time,
+        aTemperature: temperature2m,
+        created_at: new Date(),
+      });
+
+      console.log('Entered new data into the document');
 
       const html = ejs.render(file, { time, temperature2m });
 
