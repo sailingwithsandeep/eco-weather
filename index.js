@@ -67,9 +67,14 @@ functions.http('submit-weather-data', async (req, res) => {
 
       const temperature2m = weatherData.hourly.temperature2m;
 
-      const document = firestore.doc(`weather_data/${Date.now()}`);
+      // const document = firestore.doc(`weather_data/${Date.now()}`);
 
-      await document.set({
+      // await document.set({
+      //   aTime: time,
+      //   aTemperature: [...temperature2m],
+      //   created_at: new Date(),
+      // });
+      await firestore.collection('weather_data').add({
         aTime: time,
         aTemperature: [...temperature2m],
         created_at: new Date(),
