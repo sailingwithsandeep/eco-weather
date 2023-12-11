@@ -5,9 +5,9 @@ const { fetchWeatherApi } = require('openmeteo');
 const { Firestore } = require('@google-cloud/firestore');
 
 const firestore = new Firestore({
-  projectId: 'dynamic-osprey-399518',
+  projectId: 'ecotrack-8e8f7',
   keyFilename: './application_default_credentials.json',
-  databaseId: 'ecotraxk',
+  databaseId: 'ecotrack',
 });
 
 functions.http('submit-weather-data', async (req, res) => {
